@@ -443,7 +443,7 @@ Init_Level_VARs:			; CODE XREF: Load_DemoLevel+8p
 		STA	AddLife_Flag	;  <>0 - игрок получал дополнительную жизнь
 		STA	AddLife_Flag+1	;  <>0 - игрок получал дополнительную жизнь
 		STA	EnterGame_Flag	; Если 0, то можно выбрать уровень
-		LDA	#3		; Начальное количество жизней
+		LDA	#6		; Начальное количество жизней
 		STA	Player1_Lives
 		STA	Player2_Lives
 		STA	EnemyRespawn_PlaceIndex

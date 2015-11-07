@@ -3581,9 +3581,6 @@ Make_BonusEnemy:			; CODE XREF: Make_Respawn+34j
 		LDA	#4
 		STA	Tank_Type,X	; Делаем врага бонусным
 					; (ORA $80 будет потом)
-		LDA	#0
-		STA	Bonus_X		; Убираем бонус, т.к. 2-х
-					; бонусов на экране быть не может
 
 ++:					; CODE XREF: Make_Respawn+16j
 					; Make_Respawn+3Cj
@@ -3613,6 +3610,15 @@ Load_New_Tank:				; CODE XREF: ROM:DE6Ep
 		LDA	#3
 		STA	Invisible_Timer,X ; Силовое поле вокруг	игрока после рождения
 		LDA	Player_Type,X	; Вид танка игрока
+		CMP	#$0
+		BEQ	Start_With_One_Star
+		JMP	++
+; ───────────────────────────────────────────────────────────────────────────
+
+Start_With_One_Star:
+		LDA #$20
+		STA	Player_Type,X
+		STA	Tank_Type,X
 		JMP	++
 ; ───────────────────────────────────────────────────────────────────────────
 

@@ -1,22 +1,22 @@
-; Здесь содержится звуковой движок игры.
+; Р—РґРµСЃСЊ СЃРѕРґРµСЂР¶РёС‚СЃСЏ Р·РІСѓРєРѕРІРѕР№ РґРІРёР¶РѕРє РёРіСЂС‹.
 
 
 ; --------------- S U B	R O U T	I N E ---------------------------------------
 
-; Останавливаем	звук, включаем каналы и	т.п. (аналогично Load в	NSF формате)
+; РћСЃС‚Р°РЅР°РІР»РёРІР°РµРј	Р·РІСѓРє, РІРєР»СЋС‡Р°РµРј РєР°РЅР°Р»С‹ Рё	С‚.Рї. (Р°РЅР°Р»РѕРіРёС‡РЅРѕ Load РІ	NSF С„РѕСЂРјР°С‚Рµ)
 
 Sound_Stop:				; CODE XREF: ROM:C15Cp	ROM:C253p
 					; Draw_Brick_GameOver+65p
 					; Reset_ScreenStuff+4Ep
 		LDA	#00001111b
-		STA	SND_MASTERCTRL_REG ; Включаем аудиоканалы 0,1,2,3
+		STA	SND_MASTERCTRL_REG ; Р’РєР»СЋС‡Р°РµРј Р°СѓРґРёРѕРєР°РЅР°Р»С‹ 0,1,2,3
 		LDA	#11000000b
-		STA	JOYPAD_PORT2	; Включение Vertical Clock Signal (внешнего) и выключение внутреннего
+		STA	JOYPAD_PORT2	; Р’РєР»СЋС‡РµРЅРёРµ Vertical Clock Signal (РІРЅРµС€РЅРµРіРѕ) Рё РІС‹РєР»СЋС‡РµРЅРёРµ РІРЅСѓС‚СЂРµРЅРЅРµРіРѕ
 		LDA	#$1C		;
-					; Заполнение нулями области 300-31С (каждый байт)
-					; и 31С-3FC (через 8 байт)
+					; Р—Р°РїРѕР»РЅРµРЅРёРµ РЅСѓР»СЏРјРё РѕР±Р»Р°СЃС‚Рё 300-31РЎ (РєР°Р¶РґС‹Р№ Р±Р°Р№С‚)
+					; Рё 31РЎ-3FC (С‡РµСЂРµР· 8 Р±Р°Р№С‚)
 		STA	Low_Ptr_byte2
-		LDA	#3		; Будем	читать из RAM звуков ($300)
+		LDA	#3		; Р‘СѓРґРµРј	С‡РёС‚Р°С‚СЊ РёР· RAM Р·РІСѓРєРѕРІ ($300)
 		STA	High_Ptr_byte2
 		LDX	#0
 		LDY	#0
@@ -42,7 +42,7 @@ Sound_Stop:				; CODE XREF: ROM:C15Cp	ROM:C253p
 
 ; --------------- S U B	R O U T	I N E ---------------------------------------
 
-; аналогично Play в NSF	формате
+; Р°РЅР°Р»РѕРіРёС‡РЅРѕ Play РІ NSF	С„РѕСЂРјР°С‚Рµ
 
 Play_Sound:				; CODE XREF: ROM:D439p
 		LDA	Pause_Flag
@@ -229,7 +229,7 @@ loc_EB88:				; CODE XREF: Play_Sound+FCj
 					; ROM:EC5Ej ROM:EC68j	ROM:EC72j
 					; ROM:EC7Ej ROM:ECA2j	ROM:ECACj
 		JSR	sub_ECBE
-		CMP	#$E8 ; 'ш'
+		CMP	#$E8 ; 'С€'
 		BCS	loc_EBE1
 		CMP	#$60 ; '`'
 		BEQ	loc_EBD7
@@ -242,15 +242,15 @@ loc_EB88:				; CODE XREF: Play_Sound+FCj
 
 loc_EB9E:				; CODE XREF: Play_Sound+115j
 		PHA
-		AND	#$F8 ; '°'
+		AND	#$F8 ; 'В°'
 		LSR	A
 		LSR	A
 		TAX
-		LDA	Snd_Beep,X	; Похоже на
-					; звуковые данные(отвечают за отдельные	звуки?)
+		LDA	Snd_Beep,X	; РџРѕС…РѕР¶Рµ РЅР°
+					; Р·РІСѓРєРѕРІС‹Рµ РґР°РЅРЅС‹Рµ(РѕС‚РІРµС‡Р°СЋС‚ Р·Р° РѕС‚РґРµР»СЊРЅС‹Рµ	Р·РІСѓРєРё?)
 		STA	byte_FD
-		LDA	Snd_Beep+1,X	; Похоже на
-					; звуковые данные(отвечают за отдельные	звуки?)
+		LDA	Snd_Beep+1,X	; РџРѕС…РѕР¶Рµ РЅР°
+					; Р·РІСѓРєРѕРІС‹Рµ РґР°РЅРЅС‹Рµ(РѕС‚РІРµС‡Р°СЋС‚ Р·Р° РѕС‚РґРµР»СЊРЅС‹Рµ	Р·РІСѓРєРё?)
 		STA	byte_FE
 		PLA
 		AND	#7
@@ -266,7 +266,7 @@ loc_EBB4:				; CODE XREF: Play_Sound+13Bj
 loc_EBBB:				; CODE XREF: Play_Sound+133j
 		LDY	#4
 		LDA	(Low_Ptr_byte2),Y
-		AND	#$F8 ; '°'
+		AND	#$F8 ; 'В°'
 		ORA	byte_FD
 		STA	(Low_Ptr_byte2),Y
 		LDA	byte_FE
@@ -290,15 +290,15 @@ loc_EBD7:				; CODE XREF: Play_Sound+113j
 ; ---------------------------------------------------------------------------
 
 loc_EBE1:				; CODE XREF: Play_Sound+10Fj
-		SBC	#$E8 ; 'ш'
+		SBC	#$E8 ; 'С€'
 		JSR	sub_ECD0
 ; ---------------------------------------------------------------------------
-;Указатели?
-Sound_Com_JumpTable:.WORD Sound_Com1	; Указатели на косвенный прыжок	в подпрограммы ниже
-					; (при взрыве врага $ECD9)
-		.WORD Sound_Com2	; Не выполнилось
+;РЈРєР°Р·Р°С‚РµР»Рё?
+Sound_Com_JumpTable:.WORD Sound_Com1	; РЈРєР°Р·Р°С‚РµР»Рё РЅР° РєРѕСЃРІРµРЅРЅС‹Р№ РїСЂС‹Р¶РѕРє	РІ РїРѕРґРїСЂРѕРіСЂР°РјРјС‹ РЅРёР¶Рµ
+					; (РїСЂРё РІР·СЂС‹РІРµ РІСЂР°РіР° $ECD9)
+		.WORD Sound_Com2	; РќРµ РІС‹РїРѕР»РЅРёР»РѕСЃСЊ
 		.WORD Sound_Com3
-		.WORD Sound_Com4	; Не выполнилось
+		.WORD Sound_Com4	; РќРµ РІС‹РїРѕР»РЅРёР»РѕСЃСЊ
 		.WORD Sound_Com5
 		.WORD Sound_Com6
 		.WORD Sound_Com7
@@ -332,7 +332,7 @@ Sound_Com1:				; DATA XREF: Play_Sound:Sound_Com_JumpTableo
 ; ---------------------------------------------------------------------------
 
 Sound_Com2:				; DATA XREF: Play_Sound+16Ao
-		JSR	sub_ECBE	; Не выполнилось
+		JSR	sub_ECBE	; РќРµ РІС‹РїРѕР»РЅРёР»РѕСЃСЊ
 		STA	byte_FD
 		LDY	#1
 		LDA	(Low_Ptr_byte2),Y
@@ -354,7 +354,7 @@ Sound_Com3:				; DATA XREF: Play_Sound+16Co
 ; ---------------------------------------------------------------------------
 
 Sound_Com4:				; DATA XREF: Play_Sound+16Eo
-		JSR	sub_ECBE	; Не выполнилось
+		JSR	sub_ECBE	; РќРµ РІС‹РїРѕР»РЅРёР»РѕСЃСЊ
 		STA	byte_FD
 		LDY	#1
 		LDA	(Low_Ptr_byte2),Y
@@ -443,7 +443,7 @@ Sound_Com13:				; CODE XREF: ROM:EC91j
 Load_Snd_Ptr:				; CODE XREF: Play_Sound+D7p
 					; Play_Sound:loc_EB85p
 		LDA	Sound_Number
-		ASL	A		; Т.к. указатель двухбайтовый
+		ASL	A		; Рў.Рє. СѓРєР°Р·Р°С‚РµР»СЊ РґРІСѓС…Р±Р°Р№С‚РѕРІС‹Р№
 		TAX
 		LDA	Sound_PtrTbl,X
 		STA	Low_SndPtr
@@ -500,15 +500,15 @@ sub_ECD0:				; CODE XREF: Play_Sound+165p
 ; End of function sub_ECD0
 
 ; ---------------------------------------------------------------------------
-; Звук?
-;Загружается $EBA4
+; Р—РІСѓРє?
+;Р—Р°РіСЂСѓР¶Р°РµС‚СЃСЏ $EBA4
 Snd_Beep:	.BYTE 7, $F2, 7, $80, 7, $14, 6, $AE, 6, $43, 5, $F4, 5
 					; DATA XREF: Play_Sound+126r
 					; Play_Sound+12Br
-		.BYTE $9E, 5, $4E, 5, 2, 4, $BA, 4, $76, 4, $36	; Похоже на
-					; звуковые данные(отвечают за отдельные	звуки?)
+		.BYTE $9E, 5, $4E, 5, 2, 4, $BA, 4, $76, 4, $36	; РџРѕС…РѕР¶Рµ РЅР°
+					; Р·РІСѓРєРѕРІС‹Рµ РґР°РЅРЅС‹Рµ(РѕС‚РІРµС‡Р°СЋС‚ Р·Р° РѕС‚РґРµР»СЊРЅС‹Рµ	Р·РІСѓРєРё?)
 
-;Указатели на звуковые данные (28 звуков)
+;РЈРєР°Р·Р°С‚РµР»Рё РЅР° Р·РІСѓРєРѕРІС‹Рµ РґР°РЅРЅС‹Рµ (28 Р·РІСѓРєРѕРІ)
 Sound_PtrTbl:	.WORD Sound_Pause	; DATA XREF: Load_Snd_Ptr+4r
 					; Load_Snd_Ptr+9r
 		.WORD Sound_Battle1
@@ -539,9 +539,9 @@ Sound_PtrTbl:	.WORD Sound_Pause	; DATA XREF: Load_Snd_Ptr+4r
 		.WORD sound_GameOver3
 		.WORD sound_BonusPts
 
-;Звуковые данные:
-;$E8 - конец звука
-;Если звук зациклен (move, engine), байта конца	нет
+;Р—РІСѓРєРѕРІС‹Рµ РґР°РЅРЅС‹Рµ:
+;$E8 - РєРѕРЅРµС† Р·РІСѓРєР°
+;Р•СЃР»Рё Р·РІСѓРє Р·Р°С†РёРєР»РµРЅ (move, engine), Р±Р°Р№С‚Р° РєРѕРЅС†Р°	РЅРµС‚
 Sound_Battle1:	.BYTE	1,$81,$7F,$40,$EF,$68,$1B,$2B,$33,$F0,	2,  6,$33,$43,$53,$F0
 					; DATA XREF: ROM:ED00o
 		.BYTE	2, $C,$43,$53,	4,$F0,	2,$12,$5B, $C,$1C,$F0,	2,$18,$78,$1C

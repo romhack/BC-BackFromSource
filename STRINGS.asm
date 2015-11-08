@@ -1,9 +1,9 @@
-;Далее следуют все строки и всё, что выводится стрингами:
+;Р”Р°Р»РµРµ СЃР»РµРґСѓСЋС‚ РІСЃРµ СЃС‚СЂРѕРєРё Рё РІСЃС‘, С‡С‚Рѕ РІС‹РІРѕРґРёС‚СЃСЏ СЃС‚СЂРёРЅРіР°РјРё:
 ;
 
 aMAP_MODE:	.BYTE 'MAPS',$68,$FF   ; DATA XREF: Draw_TitleScreen+C6t
 					; Draw_TitleScreen+CAt
-					; Часть	тайловой карты для надписи NAMCOT
+					; Р§Р°СЃС‚СЊ	С‚Р°Р№Р»РѕРІРѕР№ РєР°СЂС‚С‹ РґР»СЏ РЅР°РґРїРёСЃРё NAMCOT
 aBattle:	.BYTE 'BATTLE',$FF      ; DATA XREF: Load_DemoLevel+36t
 					; Load_DemoLevel+3At
 					; Draw_TitleScreen+12t
@@ -14,24 +14,24 @@ aCity:		.BYTE 'CITY',$FF        ; DATA XREF: Load_DemoLevel+49t
 					; Draw_TitleScreen+29t
 aK:		.BYTE $5E,$6B,$FF	; DATA XREF: Draw_TitleScreen+3At
 					; Draw_TitleScreen+3Et
-					; Для экрана подсчёта очков: 'I-'
+					; Р”Р»СЏ СЌРєСЂР°РЅР° РїРѕРґСЃС‡С‘С‚Р° РѕС‡РєРѕРІ: 'I-'
 a_k:		.BYTE $5F,$6B,$FF	; DATA XREF: Draw_TitleScreen+74t
 					; Draw_TitleScreen+78t
-					; Для экрана подсчёта очков: 'II-'
+					; Р”Р»СЏ СЌРєСЂР°РЅР° РїРѕРґСЃС‡С‘С‚Р° РѕС‡РєРѕРІ: 'II-'
 I_p:		.BYTE $58,$13,$FF	; DATA XREF: Draw_IPt Draw_IP+4t
-					; надпись IP прямо над жизнями игроков
+					; РЅР°РґРїРёСЃСЊ IP РїСЂСЏРјРѕ РЅР°Рґ Р¶РёР·РЅСЏРјРё РёРіСЂРѕРєРѕРІ
 II_p:		.BYTE $5A,$13,$FF	; DATA XREF: Draw_IP:Draw_IIPt
 					; Draw_IP+1Dt
-					; надпись IIP прямо над	жизнями	игроков
+					; РЅР°РґРїРёСЃСЊ IIP РїСЂСЏРјРѕ РЅР°Рґ	Р¶РёР·РЅСЏРјРё	РёРіСЂРѕРєРѕРІ
 aHik:		.BYTE 'HIk',$FF         ; DATA XREF: Draw_TitleScreen+55t
 					; Draw_TitleScreen+59t
 					; HI-
 aHiscore:	.BYTE 'HISCORE',$FF     ; DATA XREF: Draw_Record_HiScore+18t
 					; Draw_Record_HiScore+1Ct
-					; Выводится в виде кирпичной надписи, если рекорд
+					; Р’С‹РІРѕРґРёС‚СЃСЏ РІ РІРёРґРµ РєРёСЂРїРёС‡РЅРѕР№ РЅР°РґРїРёСЃРё, РµСЃР»Рё СЂРµРєРѕСЂРґ
 aHikscore:	.BYTE 'HIkSCORE',$FF    ; DATA XREF: Draw_Pts_Screen_Template+2At
 					; Draw_Pts_Screen_Template+2Et
-					; k=тире
+					; k=С‚РёСЂРµ
 a1Player:	.BYTE '1 PLAYER',$FF    ; DATA XREF: Draw_TitleScreen+96t
 					; Draw_TitleScreen+9At
 a2Players:	.BYTE '2 PLAYERS',$FF   ; DATA XREF: Draw_TitleScreen+A5t
@@ -46,16 +46,16 @@ aConstruction:	.BYTE 'CONSTRUCTION',$FF ; DATA XREF: Draw_TitleScreen+B4t
 					; Draw_TitleScreen+B8t
 Copyrights:	.BYTE '@1985 NAMCO LTD',$64,' 2008 GRIEVER',$FF ; DATA XREF: Draw_TitleScreen+D5t
 					; Draw_TitleScreen+D9t
-					; Кстати, в начале РОМа	первая цифра не	1980 а 1981
+					; РљСЃС‚Р°С‚Рё, РІ РЅР°С‡Р°Р»Рµ Р РћРњР°	РїРµСЂРІР°СЏ С†РёС„СЂР° РЅРµ	1980 Р° 1981
 aSite: 		.BYTE 'MAGICTEAM',$FF
 PlayerLives_Icon:.BYTE $14,$FF		; DATA XREF: Draw_Player_Lives+At
 					; Draw_Player_Lives+Et
 					; Draw_Player_Lives:Draw_2P_Livest
 					; Draw_Player_Lives+2Et
-					; Значок жизней	игрока
+					; Р—РЅР°С‡РѕРє Р¶РёР·РЅРµР№	РёРіСЂРѕРєР°
 aGame:		.BYTE 'GAME',$FF        ; DATA XREF: Draw_Brick_GameOver+18t
 					; Draw_Brick_GameOver+1Ct
-					; Выводится в виде кирпичной надписи на	весь экран
+					; Р’С‹РІРѕРґРёС‚СЃСЏ РІ РІРёРґРµ РєРёСЂРїРёС‡РЅРѕР№ РЅР°РґРїРёСЃРё РЅР°	РІРµСЃСЊ СЌРєСЂР°РЅ
 aOver:		.BYTE 'OVER',$FF        ; DATA XREF: Draw_Brick_GameOver+2Bt
 					; Draw_Brick_GameOver+2Ft
 aCongrats: .BYTE 'CONGRATS',$FF
@@ -88,17 +88,17 @@ aStageScr: .BYTE $23,$24,$25,$26,$27,$11,$11,$FF ; STAGE
 
 Reinforcement_Icon:.BYTE $6A,$FF	; DATA XREF: ReinforceToRAM+3t
 					; ReinforceToRAM+7t
-					; Составляют лист оставшихся врагов
+					; РЎРѕСЃС‚Р°РІР»СЏСЋС‚ Р»РёСЃС‚ РѕСЃС‚Р°РІС€РёС…СЃСЏ РІСЂР°РіРѕРІ
 LevelFlag_Upper_Icons:.BYTE $6C,$FC,$FF	; DATA XREF: Draw_LevelFlag+3t
 					; Draw_LevelFlag+7t
-					; Флажок над номером уровня в правой части экрана
+					; Р¤Р»Р°Р¶РѕРє РЅР°Рґ РЅРѕРјРµСЂРѕРј СѓСЂРѕРІРЅСЏ РІ РїСЂР°РІРѕР№ С‡Р°СЃС‚Рё СЌРєСЂР°РЅР°
 LevelFlag_Lower_Icons:.BYTE $6D,$FD,$FF	; DATA XREF: Draw_LevelFlag+12t
 					; Draw_LevelFlag+16t
 Empty_Tile:	.BYTE $11,$FF		; DATA XREF: Draw_EmptyTile+3t
 					; Draw_EmptyTile+7t
-					; Подменяет значок врага, когда	тот рождается
+					; РџРѕРґРјРµРЅСЏРµС‚ Р·РЅР°С‡РѕРє РІСЂР°РіР°, РєРѕРіРґР°	С‚РѕС‚ СЂРѕР¶РґР°РµС‚СЃСЏ
 
-;! Стринги режимов карты:
+;! РЎС‚СЂРёРЅРіРё СЂРµР¶РёРјРѕРІ РєР°СЂС‚С‹:
 MAP_MODE_STRINGS:
 .WORD aOriginal
 .WORD aRandom
@@ -113,7 +113,7 @@ aBack:	   .BYTE 'BACK FROM SOURCE',$FF
 
 
 
-;Штаб отрисовывается стрингами
+;РЁС‚Р°Р± РѕС‚СЂРёСЃРѕРІС‹РІР°РµС‚СЃСЏ СЃС‚СЂРёРЅРіР°РјРё
 Normal_HQ_TSA:	.BYTE	0,  0,	0,  0,	0,  0,$FF
 NormalLine2:	.BYTE	0, $F, $F, $F, $F,  0,$FF ; DATA XREF: DraW_Normal_HQ+Ft
 					; DraW_Normal_HQ+13t
@@ -140,7 +140,7 @@ DestroyedHQ_TSA_Line1:.BYTE $CC,$CE,$FF	; DATA XREF: Draw_Destroyed_HQt
 DestroyedHQ_TSA_Line2:.BYTE $CD,$CF,$FF	; DATA XREF: Draw_Destroyed_HQ+Ft
 					; Draw_Destroyed_HQ+13t
 
-Shovel_HQ_TSA_Line1:.BYTE   0,0,0,0,0,0,$FF ;	Рисуется после взятия врагом лопаты
+Shovel_HQ_TSA_Line1:.BYTE   0,0,0,0,0,0,$FF ;	Р РёСЃСѓРµС‚СЃСЏ РїРѕСЃР»Рµ РІР·СЏС‚РёСЏ РІСЂР°РіРѕРј Р»РѕРїР°С‚С‹
 					
 Shovel_HQ_TSA_Line2:.BYTE   0,0,0,0,0,0,$FF 
 					
@@ -170,13 +170,13 @@ Arrow_Right:	.BYTE $5D,$FF		; DATA XREF: Draw_Pts_Screen_Template+E1t
 					; Draw_Pts_Screen_Template+103t
 					; Draw_Pts_Screen_Template+10Et
 					; Draw_Pts_Screen_Template+112t
-					; Используются при подсчёте очков
+					; РСЃРїРѕР»СЊР·СѓСЋС‚СЃСЏ РїСЂРё РїРѕРґСЃС‡С‘С‚Рµ РѕС‡РєРѕРІ
 aTotal:		.BYTE 'TOTAL',$FF       ; DATA XREF: Draw_Pts_Screen_Template+1B1t
 					; Draw_Pts_Screen_Template+1B5t
 aLine:		.BYTE $5C,$5C,$5C,$5C,$5C,$5C,$5C,$5C,$FF
 					; DATA XREF: Draw_Pts_Screen_Template+1A2t
 					; Draw_Pts_Screen_Template+1A6t
-					; Полоска над 'TOTAL' при подсчёте очков
+					; РџРѕР»РѕСЃРєР° РЅР°Рґ 'TOTAL' РїСЂРё РїРѕРґСЃС‡С‘С‚Рµ РѕС‡РєРѕРІ
 aBonus:		.BYTE 'BONUS',$15,$FF   ; DATA XREF: Draw_Pts_Screen+18At
 					; Draw_Pts_Screen+18Et
 					; Draw_Pts_Screen+1E5t
